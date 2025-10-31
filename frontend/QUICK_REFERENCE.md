@@ -309,19 +309,23 @@ src/
 ### 合约交互示例
 ```typescript
 // hooks/useContract.ts
-import { ethers } from 'ethers';
+import { ethers, Contract, InterfaceAbi } from 'ethers';
 import { useState, useEffect } from 'react';
 
-export function useContract(address: string, abi: any) {
-  const [contract, setContract] = useState(null);
+export function useContract(address: string, abi: InterfaceAbi) {
+  const [contract, setContract] = useState<Contract | null>(null);
   
   useEffect(() => {
-    if (window.ethereum) {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      const contract = new ethers.Contract(address, abi, signer);
-      setContract(contract);
+    async function setupContract() {
+      if (window.ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const contractInstance = new ethers.Contract(address, abi, signer);
+        setContract(contractInstance);
+      }
     }
+    
+    setupContract();
   }, [address, abi]);
   
   return contract;
