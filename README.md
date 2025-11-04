@@ -37,9 +37,12 @@
     ```bash
     npx hardhat compile
     ```
-4. ...
-5. ...
-6. 在 `./frontend` 中安装需要的依赖，运行如下的命令：
+    得到的地址后续用于连接网页
+4. 在 `./contracts` 中部署合约，运行如下的命令：
+   ```bash
+   npx hardhat run ./scripts/deploy.ts --network ganache
+   ```
+5. 在`contracts/hardhat.config.ts`里加入`ganache`内的账号，在`deploy.ts`内连接区块链，默认端口`localhost:8545`，若无必要，可不更改。在`house-nft/src/utils/contract-addresses.json`内填入刚刚部署合约时记录的地址.在 `./frontend` 中安装需要的依赖，运行如下的命令：
     ```bash
     npm install
     ```

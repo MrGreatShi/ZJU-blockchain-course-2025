@@ -1,4 +1,4 @@
-import { HardhatUserConfig } from "hardhat/config";
+import { HardhatUserConfig } from "hardhat/config.js";
 import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
@@ -9,7 +9,9 @@ const config: HardhatUserConfig = {
       url: 'http://localhost:8545',
       // the private key of signers, change it according to your ganache user
       accounts: [
-        '0x172a483415c5e119f1ea336d44646572ac34a088e7bc2884f8e1f83da4cb304a'
+        '0xd9853cd1bf9a6e85219d07392fb3d19b6afb757796712e5dfdd5f3e30f6e8aaa',
+        '0xe69874bd4e45f7764cc1ea98f82bb395cc6f9c4d61e8e5e2decd7ae82550dded',
+        '0x27211bb7840f65759914519d8d1539645fb2a9f095d8d1c2f8a016ff156a6cb5'
       ]
     },
   },
