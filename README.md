@@ -53,15 +53,39 @@
 
 ## 功能实现分析
 
-简单描述：项目完成了要求的哪些功能？每个功能具体是如何实现的？
-
-建议分点列出。
+1. 管理员(manager)可以创立许多竞猜项目，并为每个项目设立2个或多个可能的选项，初始的奖池金额以及预定的结果公布时间。其他用户首先领取到测试所需ZJU Token。
+2. 在网站中，对于一个竞猜项目和多个可能的选项：
+* 每个用户都可以选择其中的某个选项并购买一定金额（自己定义）的彩票，购买后该玩家会获得一张对应的彩票凭证（一个 ERC721 合约中的 Token）
+* 在竞彩结果公布之前，任何用户之间可以选择买卖他们的彩票：用户可以以指定的金额挂单出售自己的彩票并可以在售出之前取消出售；其它玩家如果觉得该彩票有利可图就可以买入他的彩票。双方完成一次 ERC721 Token 交易。
+3. 管理员可以在时间截止前（简单起见，项目中可以随时终止竞赛）输入竞猜的结果并进行结算。所有胜利的玩家可以平分奖池中的金额，每张胜利彩票管理员会收取1积分作为消耗。  
+Bonus：  
+1.（2分）发行一个 ERC20 合约，允许用户领取 ERC20 积分，并使用ERC20积分完成上述流程。
+* 已自己发行muERC20货币并在contracts中调用。  
+2.（3分）对交易彩票的过程实现一个简单的链上订单簿：卖方用户可以以不同价格出售一种彩票，网页上显示当前订单簿的信息（多少价格有多少该彩票正在出售）。其他用户可以根据最优价格购买彩票。
+* 已构建对话框，用户可根据选择的竞赛和选项获取所有彩票并自由选购。
 
 ## 项目运行截图
 
-放一些项目运行截图。
-
-项目运行成功的关键页面和流程截图。主要包括操作流程以及和区块链交互的截图。
+1. 连接钱包
+   ![alt text](picture/image.png)
+   ![alt text](picture/image-1.png)
+2. 领取空投
+   ![alt text](picture/image-2.png)
+3. 新建竞赛
+   ![alt text](picture/image-3.png)
+   ![alt text](picture/image-4.png)
+4. 新建彩票
+   ![alt text](picture/image-5.png)
+   ![alt text](picture/image-6.png)
+   ![alt text](picture/image-7.png)
+5. 彩票交易
+   ![alt text](picture/image-8.png)
+   ![alt text](picture/image-9.png)
+6. 竞赛结算
+   ![alt text](picture/image-10.png)
+   ![alt text](picture/image-11.png)
+   ![alt text](picture/image-12.png)
+   ![alt text](picture/image-13.png)
 
 ## 参考内容
 
@@ -71,4 +95,5 @@
 
 - 如何实现ETH和ERC20的兑换？ [参考讲解](https://www.wtf.academy/en/docs/solidity-103/DEX/)
 
-如果有其它参考的内容，也请在这里陈列。
+如果有其它参考的内容，也请在这里陈列。  
+AI使用情况：处理了一些框架构建过程中的问题；frontend文件中json文件接口代码的生成；一些用于检查错误的输出代码。
